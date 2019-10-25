@@ -11,6 +11,19 @@ az feature register --name AKSAzureStandardLoadBalancer --namespace Microsoft.Co
 az provider register --namespace Microsoft.ContainerService 
 az aks create -n privateCluster -g privateCluster --load-balancer-sku standard --enable-private-cluster
 
+vnet=$(az network vnet list -g MC_privateCluster_privateCluster_westus -o json)
+vnetName=$(echo $vnet | jq -r .[].name)
+username=user
+password=user@PASS123
+subnet=aks-subnet
+
+az vm create --resource-group privateCluster \
+--name myVM --location westus \
+--image UbuntuLTS \
+--vnet-name $vnetName \
+--subnet $subnet \
+--admin-username $username  --admin-password $password \
+--size standard_DS1_v2 
 << COMMENT
 create the cluster
 create a VM in the same VNET as the cluster 
@@ -24,18 +37,6 @@ az login
 az account set 
 sudo az aks install-cli
 az aks get-credentials -g privateCluster -n privateCluster
-
-Before the demo starts, we need the private cluster created, merged into the current context, and the VM created on the same VNET as the private cluster. 
-If we create the VM using a static IP:
-
-az vm create \
-  --resource-group privateCluster \
-  --name myVM \
-  --image UbuntuLTS \
-  --admin-username azureuser \
-  --generate-ssh-keys \
-  --public-ip-address myPublicIpAddress \
-  --public-ip-address-allocation static
 
 Start by showing the creating process of a private cluster (--enable-private-cluster flag)
 Show that this is indeed private by trying to access the cluster through the CLI (should get a 404 error)
