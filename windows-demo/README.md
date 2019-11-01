@@ -1,7 +1,7 @@
 
 To setup the demo, either use the windows-demo context in the kubeconfig file
 ```
-kubectl config use-context windows
+kubectl config use-context windows-demo
 ```
 or run the setup.sh in this folder to create your own environment.
 

@@ -2,7 +2,7 @@
 
 **Setup**
 
-To set up the environment for the live demo, run the setup.sh or if you're using the pre-made environment kubectl config use-context virtual-nodes. Then, open up the following tabs:
+To set up the environment for the live demo, run the setup.sh or if you're using the pre-made environment kubectl config use-context virtual-node-autoscale. Then, open up the following tabs:
 - Contoso Store (http://store.13.90.60.80.nip.io/)
 - Live Metrics Stream for App Insights for Contoso Store
 - Grafana Dashboard (localhost:3000)
