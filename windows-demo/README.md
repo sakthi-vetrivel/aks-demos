@@ -1,5 +1,5 @@
 
-To setup the demo, either use the windows context in the kubeconfig file
+To setup the demo, either use the windows-demo context in the kubeconfig file
 ```
 kubectl config use-context windows
 ```
