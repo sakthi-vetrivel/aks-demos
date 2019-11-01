@@ -1,8 +1,13 @@
+**Virtual Nodes**
+
+**Setup**
+
 To set up the environment for the live demo, run the setup.sh or if you're using the pre-made environment kubectl config use-context virtual-nodes. Then, open up the following tabs:
 - Contoso Store (http://store.13.90.60.80.nip.io/)
 - Live Metrics Stream for App Insights for Contoso Store
 - Grafana Dashboard (localhost:3000)
 
+**Walkthrough**
 
 First, walk through the portal experience of creating a cluster with virtual nodes enabled (Slider on Scaling Tab).
 
@@ -22,7 +27,12 @@ Once you see the Live Metrics start responding to the increase in traffic, navig
 
 Go over the various metrics and explain the graphs (Request per pod, Requests per second. Response time, Number of container instances)
 
-Watch it scale!
 
-To reset: The loadtest only runs for about 5 minutes, so no reset needed here, beyond clearing the terminals you're using.
+**i n f i n i t e s c a l i n g**
+
+
+
+**Reset**
+
+ The loadtest only runs for about 5 minutes, so no reset needed here, beyond clearing the terminals you're using.
 No clean up!

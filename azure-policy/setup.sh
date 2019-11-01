@@ -16,5 +16,7 @@ az aks create -n azure-policy -g azure-policy-rg --node-count 1
 az aks enable-addons --addons azure-policy --name azure-policy --resource-group azure-policy-rg
 
 # Creating policy
-az policy assignment create --name 'no-privileged-containers' --display-name '[Limited Preview]: Do not allow privileged containers in AKS' --scope 'azure-policy-rg' --policy '/providers/Microsoft.Authorization/policyDefinitions/7ce7ac02-a5c6-45d6-8d1b-844feb1c1531"'
+subscription_id=$(az account show -o json --query id)
+scope=/subscriptions/$subscription_id/resourceGroups/azure-policy-rg
+az policy assignment create --name 'no-privileged-containers' --display-name '[Limited Preview]: Do not allow privileged containers in AKS' --scope scope --policy '/providers/Microsoft.Authorization/policyDefinitions/7ce7ac02-a5c6-45d6-8d1b-844feb1c1531"'
 az aks enable-addons --addons azure-policy --name azure-policy --resource-group azure-policy-rg
