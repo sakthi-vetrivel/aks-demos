@@ -1,8 +1,9 @@
-<< COMMENT
-Windows demo setup commands
-COMMENT 
+# << COMMENT
+# Windows demo setup commands
+# COMMENT >>
 # Install the aks-preview extension
 az extension add --name aks-preview
+
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 az feature register --name WindowsPreview --namespace Microsoft.ContainerService
@@ -13,6 +14,7 @@ git clone https://gist.github.com/8d869c43549f2a7a2c0579c565b7d9ef.git
 mv 8d869c43549f2a7a2c0579c565b7d9ef windows-demo 
 cd window-demo
 # ^^^^ OFF SCREEN
+
 # On screen for the video demo
 az aks create \
     --resource-group demo \
@@ -63,11 +65,3 @@ kubectl get pods -o wide
 kubectl get svc # to get exposed IP
 # Test in browser
 # So here we see that we can use the linux and windows workloads together in the cluster, here using the Linux nginx server to expose the Windows application to the internet, thanks to Windows containers in AKS
-
-# Reset
-# Now to reset the in-person demo, run the following commands:
-kubectl delete -f iis-svc-ingress.yaml
-helm delete $(helm ls --short)
-kubectl get nodes -l beta.kubernetes.io/os=windows -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}' | xargs -I XX kubectl taint nodes XX windows:NoSchedule-
-
-
