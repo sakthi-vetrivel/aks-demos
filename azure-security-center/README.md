@@ -1,4 +1,10 @@
+**Setup**
+
 To begin this demo, you'll need a subscription that had been whitelisted by the Azure Security Center team, an AKS cluster in that subscription, and a standard Security Center subscription.
+
+For the container registry scanning, you'll need a container registry, which will be created for you in acr_setup.sh
+
+From the security recommendations and alerts, you'll need to create a cluster you can access in the portal. You can do that by running alerts_setup.sh
 
 **Azure Container Registry Scanning**
 
@@ -23,15 +29,16 @@ Our registry should be listed here. Go ahead and click on the registry to view d
 Click on the recommendation to review the ‘Description’, ‘General Information’, ‘Threats’ and ‘Remediation Steps’ 
 
 
-
-
 **Azure Security Center Integration with AKS**
 
 Now we're going to look at how Azure Security Center (ASC) is integrated with Azure Kubernetes Service (AKS).
 
 First, we need ASC to discover our new cluster (this can take a few hours). 
+
 Once that's done, navigate to Azure Security Center > Compute & Apps > Containers, where we'll see our cluster listed.
+
 Click on the cluster, and let's review the security recommendations.
+
 Reccommendations are listed in both the 'Reccommendations' and 'Passed Assessments' tabs at the bottom of the window.
 
 Click on a Recommendation, and review the ‘Description’, ‘General Info’, ‘Threats’ and ‘Remediation Steps’.
@@ -40,6 +47,7 @@ Click on ‘Take Action’, and you will be directed to the AKS resource page to
 We can also see these recommendations in a different view. Click on the 'Recommendations' tab on the right-hand side of Azure Security Center. Filter the recommendations by typing in 'Kubernetes' into the search bar. Now you can view recommendations across all of the clusters in your subscription.
 
 **Security Alerts with AKS**
+
  To demonstrate security alerts with AKS, we're going to deploy some containers that will simulate malicious activity. Make sure your context to set to the right cluster. We don't want to expose any other clusters to these security risks.
 
  ```
